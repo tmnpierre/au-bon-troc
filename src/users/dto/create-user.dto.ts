@@ -1,5 +1,9 @@
+import { IsString, IsEmail } from 'class-validator';
+
 export class CreateUserDto {
-    readonly Pseudo: string;
-    readonly Mail: string;
-  }
-  
+  @IsString()
+  readonly Pseudo: string;
+
+  @IsEmail()
+  readonly Mail: string;
+}

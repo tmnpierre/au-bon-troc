@@ -9,26 +9,31 @@ export class UsersController {
 
   @Post()
   async create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+    const user = await this.usersService.create(createUserDto);
+    return { message: 'User successfully created', data: user };
   }
-
+  
   @Get()
-  findAll() {
-    return this.usersService.findAll();
+  async findAll() {
+    const users = await this.usersService.findAll();
+    return { message: 'Users fetched successfully', data: users };
   }
-
+  
   @Get(':UUID')
-  findOne(@Param('UUID') UUID: string) {
-    return this.usersService.findOne(UUID);
+  async findOne(@Param('UUID') UUID: string) {
+    const user = await this.usersService.findOne(UUID);
+    return { message: 'User fetched successfully', data: user };
   }
-
-  @Patch(':id')
-  update(@Param('UUID') UUID: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(UUID, updateUserDto);
+  
+  @Patch(':UUID')
+  async update(@Param('UUID') UUID: string, @Body() updateUserDto: UpdateUserDto) {
+    const user = await this.usersService.update(UUID, updateUserDto);
+    return { message: 'User updated successfully', data: user };
   }
-
+  
   @Delete(':UUID')
-  remove(@Param('UUID') UUID: string) {
-    return this.usersService.remove(UUID);
-  } 
+  async remove(@Param('UUID') UUID: string) {
+    await this.usersService.remove(UUID);
+    return { message: 'User deleted successfully' };
+  }  
 }
