@@ -21,4 +21,6 @@ model Users {
   Pseudo   String     @unique() @db.VarChar(50)
   Mail     String     @unique() @db.VarChar(75)
   Products Products[]
+  password  String
+  emailVerified Boolean @default(false)
 }
