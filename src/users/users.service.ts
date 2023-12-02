@@ -25,6 +25,10 @@ export class UsersService {
     return this.prisma.users.findUnique({ where: { UUID } });
   }
 
+  async findByUsername(pseudo: string) {
+    return this.prisma.users.findUnique({ where: { pseudo } });
+  }
+
   async update(UUID: string, updateUserDto: UpdateUserDto) {
     if (updateUserDto.password) {
       const hashedPassword = await bcrypt.hash(updateUserDto.password, 10);
