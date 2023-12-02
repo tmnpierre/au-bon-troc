@@ -23,4 +23,12 @@ export class ProductService {
   async remove(UUID: string) {
     return `Product with UUID ${UUID} deleted`;
   }
+
+  async findAllByUserUUID(userUUID: string) {
+    return `Products of user with UUID ${userUUID}`;
+  }
+
+  async removeAllByUserUUID(userUUID: string) {
+    return `All products of user with UUID ${userUUID} deleted`;
+  }
 }
