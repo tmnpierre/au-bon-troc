@@ -25,8 +25,8 @@ export class UsersService {
     return this.prisma.users.findUnique({ where: { UUID } });
   }
 
-  async findByUsername(pseudo: string) {
-    return this.prisma.users.findUnique({ where: { pseudo } });
+  async findByUsername(Pseudo: string) {
+    return this.prisma.users.findUnique({ where: { Pseudo } });
   }
 
   async update(UUID: string, updateUserDto: UpdateUserDto) {
